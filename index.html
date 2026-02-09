@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Favorite Person ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="mySong" src="assets/music.mp3" loop></audio>
+
+    <div id="phase3" class="full-screen">
+        <div class="content-box">
+            <h1 class="dancing-font">Will you be my Valentine? ❤️</h1>
+            <div class="btn-container">
+                <button id="btnYes" class="btn">Yes, I Will!</button>
+                <button id="btnNo" class="btn">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        
+        <section class="section">
+            <h2 class="title dancing-font">Our Little Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Momen Pertama</h3>
+                        <img src="assets/foto1.jpg" class="img-memori" alt="Kenangan 1">
+                        <p>Di sini awal mula semuanya terasa berbeda...</p>
+                        <span class="date">Januari 2024</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Kencan Terindah</h3>
+                        <img src="assets/foto2.jpg" class="img-memori" alt="Kenangan 2">
+                        <p>Setiap detik sama kamu itu berharga banget.</p>
+                        <span class="date">Agustus 2024</span>
+                    </div>
+                </div>
+            </div>
+            <p class="scroll-hint">Scroll terus ke bawah ya... 👇</p>
+        </section>
+
+        <section class="section">
+            <h2 class="dancing-font">Pick your flowers...</h2>
+            <div id="flower-garden">
+                <span class="flower" onclick="collectFlower(this)">🌸</span>
+                <span class="flower" onclick="collectFlower(this)">🌹</span>
+                <span class="flower" onclick="collectFlower(this)">🌷</span>
+                <span class="flower" onclick="collectFlower(this)">🌻</span>
+                <span class="flower" onclick="collectFlower(this)">🌺</span>
+            </div>
+            <div id="final-bouquet" class="hidden">
+                <div class="bouquet-icon">💐</div>
+                <h2 class="dancing-font">Happy Valentine!</h2>
+                <p>"Ini buket bunga virtual buat kamu yang paling cantik."</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
