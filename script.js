@@ -21,11 +21,18 @@ btnNo.addEventListener('touchstart', (e) => {
     moveButton();
 });
 
-// 2. Transisi ke Konten Utama & Putar Musik
+// 2. Transisi ke Konten Utama & Putar Musik (Updated)
 btnYes.addEventListener('click', () => {
     phase3.style.display = 'none';
     mainContent.style.display = 'block';
-    mySong.play(); // Musik mulai berputar di sini
+    
+    // Memastikan musik berputar saat interaksi klik
+    if (mySong) {
+        mySong.volume = 0.7; // Atur volume ke 70%
+        mySong.play().catch(error => {
+            console.log("Browser memblokir pemutaran otomatis, tapi klik ini seharusnya sudah memberi izin.");
+        });
+    }
 });
 
 // 3. Logika Koleksi Bunga
