@@ -20,17 +20,15 @@ btnNo.addEventListener('touchstart', (e) => {
     moveButton();
 });
 
-// 2. Transisi ke Konten Utama & Putar Musik YouTube
+// 2. Transisi ke music
 btnYes.addEventListener('click', () => {
     phase3.style.display = 'none';
     mainContent.style.display = 'block';
     
-    // Perintah putar video youtube
-    const iframe = document.getElementById('video');
-    if (iframe) {
-        // Cek apakah src sudah punya parameter atau belum
-        const separator = iframe.src.includes('?') ? '&' : '?';
-        iframe.src += separator + "autoplay=1";
+    // Putar file MP3 dari folder assets
+    const mySong = document.getElementById('mySong');
+    if (mySong) {
+        mySong.play();
     }
 });
 
@@ -48,3 +46,4 @@ function collectFlower(element) {
         document.getElementById('final-bouquet').classList.remove('hidden');
     }
 }
+
