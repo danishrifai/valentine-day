@@ -2,7 +2,6 @@ const btnNo = document.getElementById('btnNo');
 const btnYes = document.getElementById('btnYes');
 const phase3 = document.getElementById('phase3');
 const mainContent = document.getElementById('main-content');
-const mySong = document.getElementById('mySong');
 
 // 1. Logika Tombol No Lari
 function moveButton() {
@@ -21,22 +20,17 @@ btnNo.addEventListener('touchstart', (e) => {
     moveButton();
 });
 
-// 2. Transisi ke Konten Utama & Putar Musik (Updated)
+// 2. Transisi ke Konten Utama & Putar Musik YouTube
 btnYes.addEventListener('click', () => {
     phase3.style.display = 'none';
     mainContent.style.display = 'block';
     
-    // Perintah putar video youtube (suaranya saja yang terdengar)
+    // Perintah putar video youtube
     const iframe = document.getElementById('video');
-    iframe.src += "&autoplay=1"; 
-});
-    
-    // Memastikan musik berputar saat interaksi klik
-    if (mySong) {
-        mySong.volume = 0.7; // Atur volume ke 70%
-        mySong.play().catch(error => {
-            console.log("Browser memblokir pemutaran otomatis, tapi klik ini seharusnya sudah memberi izin.");
-        });
+    if (iframe) {
+        // Cek apakah src sudah punya parameter atau belum
+        const separator = iframe.src.includes('?') ? '&' : '?';
+        iframe.src += separator + "autoplay=1";
     }
 });
 
@@ -54,4 +48,3 @@ function collectFlower(element) {
         document.getElementById('final-bouquet').classList.remove('hidden');
     }
 }
-
