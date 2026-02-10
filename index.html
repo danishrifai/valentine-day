@@ -9,7 +9,12 @@
 </head>
 <body>
 
-    <audio id="mySong" src="assets/music.mp3" loop></audio>
+    <div id="youtube-player" style="position:absolute; top:-9999px; left:-9999px;">
+    <iframe id="video" width="0" height="0" 
+        src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1" 
+        frameborder="0">
+    </iframe>
+</div>
 
     <div id="phase3" class="full-screen">
         <div class="content-box">
@@ -65,4 +70,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
