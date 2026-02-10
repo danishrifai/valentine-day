@@ -26,6 +26,11 @@ btnYes.addEventListener('click', () => {
     phase3.style.display = 'none';
     mainContent.style.display = 'block';
     
+    // Perintah putar video youtube (suaranya saja yang terdengar)
+    const iframe = document.getElementById('video');
+    iframe.src += "&autoplay=1"; 
+});
+    
     // Memastikan musik berputar saat interaksi klik
     if (mySong) {
         mySong.volume = 0.7; // Atur volume ke 70%
@@ -49,3 +54,4 @@ function collectFlower(element) {
         document.getElementById('final-bouquet').classList.remove('hidden');
     }
 }
+
