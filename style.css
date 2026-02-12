@@ -107,4 +107,42 @@ body {
 @media (max-width: 600px) {
     .timeline::after { left: 20px; }
     .timeline-item { width: 100%; left: 0 !important; text-align: left !important; padding-left: 45px; }
+
+}
+/* Container untuk taman bunga yang tumbuh */
+#garden-result {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+/* Batang bunga */
+.flower-stem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: grow 1s ease-out forwards;
+    transform-origin: bottom;
+}
+
+.stem {
+    width: 6px;
+    height: 100px;
+    background: linear-gradient(to top, #2d5a27, #4e9a46);
+    border-radius: 3px;
+}
+
+.flower-head {
+    font-size: 2.5rem;
+    margin-bottom: -10px;
+    z-index: 2;
+}
+
+/* Animasi tumbuh dari bawah */
+@keyframes grow {
+    0% { transform: scaleY(0); opacity: 0; }
+    100% { transform: scaleY(1); opacity: 1; }
 }
