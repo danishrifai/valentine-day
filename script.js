@@ -9,7 +9,7 @@ function moveButton() {
     const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - padding);
     const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - padding);
     
-    btnNo.style.position = 'fixed'; // Gunakan fixed agar tidak terpengaruh scroll
+    btnNo.style.position = 'fixed'; 
     btnNo.style.left = `${Math.max(padding, x)}px`;
     btnNo.style.top = `${Math.max(padding, y)}px`;
 }
@@ -20,7 +20,7 @@ btnNo.addEventListener('touchstart', (e) => {
     moveButton();
 });
 
-// 2. Transisi ke music
+// 2. Transisi & Putar Musik
 btnYes.addEventListener('click', () => {
     phase3.style.display = 'none';
     mainContent.style.display = 'block';
@@ -28,43 +28,54 @@ btnYes.addEventListener('click', () => {
     // Putar file MP3 dari folder assets
     const mySong = document.getElementById('mySong');
     if (mySong) {
-        mySong.play();
+        mySong.play().catch(error => {
+            console.log("Musik butuh interaksi user untuk mulai.");
+        });
     }
 });
 
-// 3. Logika Koleksi Bunga
+// 3. Logika Koleksi Bunga & Taman Tumbuh
 let flowerCount = 0;
 const totalFlowers = 5;
 
 function collectFlower(element, flowerType) {
-    // 1. Sembunyikan bunga yang diklik
+    // 1. Sembunyikan bunga yang diklik di menu pilihan
     element.style.opacity = '0';
     element.style.pointerEvents = 'none';
 
-    // 2. Buat elemen bunga yang "tumbuh"
+    // 2. Buat elemen bunga yang "tumbuh" di area taman
     const garden = document.getElementById('garden-result');
-    const flowerWrapper = document.createElement('div');
-    flowerWrapper.className = 'flower-stem';
-    
-    // Acak tinggi batang supaya lebih natural
-    const randomHeight = Math.floor(Math.random() * 50) + 80; 
+    if (garden) {
+        const flowerWrapper = document.createElement('div');
+        flowerWrapper.className = 'flower-stem';
+        
+        // Acak tinggi batang supaya lebih natural (antara 80px sampai 130px)
+        const randomHeight = Math.floor(Math.random() * 50) + 80; 
 
-    flowerWrapper.innerHTML = `
-        <div class="flower-head">${flowerType}</div>
-        <div class="stem" style="height: ${randomHeight}px;"></div>
-    `;
+        flowerWrapper.innerHTML = `
+            <div class="flower-head">${flowerType}</div>
+            <div class="stem" style="height: ${randomHeight}px;"></div>
+        `;
 
-    garden.appendChild(flowerWrapper);
+        garden.appendChild(flowerWrapper);
+    }
 
-    // 3. Logika selesai
+    // 3. Logika Selesai: Munculkan pesan ucapan
     flowerCount++;
     if (flowerCount === totalFlowers) {
         setTimeout(() => {
-            document.getElementById('final-bouquet').classList.remove('hidden');
-            // Opsional: sembunyikan instruksi klik setelah selesai
-            document.getElementById('flower-garden').style.display = 'none';
-        }, 1000);
+            const finalBouquet = document.getElementById('final-bouquet');
+            const flowerGarden = document.getElementById('flower-garden');
+            
+            // Hapus class hidden agar teks muncul (berkat CSS display: none !important tadi)
+            if (finalBouquet) {
+                finalBouquet.classList.remove('hidden');
+            }
+            
+            // Sembunyikan pilihan bunga asal biar rapi
+            if (flowerGarden) {
+                flowerGarden.style.display = 'none';
+            }
+        }, 1000); // Jeda 1 detik biar bunga terakhir selesai tumbuh dulu
     }
 }
-
-
