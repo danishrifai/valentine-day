@@ -83,16 +83,18 @@
             <p class="scroll-hint">Scroll terus ke bawah ya... 👇</p>
         </section>
 
-        <section class="section">
-            <h2 class="dancing-font">Pick your flowers...</h2>
-            <div id="flower-garden">
-                <span class="flower" onclick="collectFlower(this)">🌸</span>
-                <span class="flower" onclick="collectFlower(this)">🌹</span>
-                <span class="flower" onclick="collectFlower(this)">🌷</span>
-                <span class="flower" onclick="collectFlower(this)">🌻</span>
-                <span class="flower" onclick="collectFlower(this)">🌺</span>
-            </div>
-            <div id="final-bouquet" class="hidden">
+      <section class="section">
+    <h2 class="dancing-font">Pick your flowers...</h2>
+    <div id="flower-garden">
+        <span class="flower" onclick="collectFlower(this, '🌸')">🌸</span>
+        <span class="flower" onclick="collectFlower(this, '🌹')">🌹</span>
+        <span class="flower" onclick="collectFlower(this, '🌷')">🌷</span>
+        <span class="flower" onclick="collectFlower(this, '🌻')">🌻</span>
+        <span class="flower" onclick="collectFlower(this, '🌺')">🌺</span>
+    </div>
+
+    <div id="garden-result"></div>
+            
                 <div class="bouquet-icon">💐</div>
                 <h2 class="dancing-font">Happy Valentine!</h2>
                 <p>"Ini buket bunga virtual buat kamu yang paling cantik."</p>
@@ -105,7 +107,6 @@
                 <p>- Mr.D</p>
             </div>
         </section>
-    </div>
 
     <div style="position: fixed; z-index: -999; bottom: 0; left: 0; opacity: 0; pointer-events: none;">
         <iframe id="video" width="0" height="0" 
@@ -117,4 +118,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
