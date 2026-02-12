@@ -36,14 +36,35 @@ btnYes.addEventListener('click', () => {
 let flowerCount = 0;
 const totalFlowers = 5;
 
-function collectFlower(element) {
+function collectFlower(element, flowerType) {
+    // 1. Sembunyikan bunga yang diklik
     element.style.opacity = '0';
     element.style.pointerEvents = 'none';
-    flowerCount++;
+
+    // 2. Buat elemen bunga yang "tumbuh"
+    const garden = document.getElementById('garden-result');
+    const flowerWrapper = document.createElement('div');
+    flowerWrapper.className = 'flower-stem';
     
+    // Acak tinggi batang supaya lebih natural
+    const randomHeight = Math.floor(Math.random() * 50) + 80; 
+
+    flowerWrapper.innerHTML = `
+        <div class="flower-head">${flowerType}</div>
+        <div class="stem" style="height: ${randomHeight}px;"></div>
+    `;
+
+    garden.appendChild(flowerWrapper);
+
+    // 3. Logika selesai
+    flowerCount++;
     if (flowerCount === totalFlowers) {
-        document.getElementById('flower-garden').style.display = 'none';
-        document.getElementById('final-bouquet').classList.remove('hidden');
+        setTimeout(() => {
+            document.getElementById('final-bouquet').classList.remove('hidden');
+            // Opsional: sembunyikan instruksi klik setelah selesai
+            document.getElementById('flower-garden').style.display = 'none';
+        }, 1000);
     }
 }
+
 
